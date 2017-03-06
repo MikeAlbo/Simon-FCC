@@ -9,6 +9,9 @@
     <!--my css-->
     <link rel="stylesheet" type="text/css" href="styles/main.css">
     
+<!--    google fonts  -->
+    <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One|Share+Tech+Mono" rel="stylesheet">
+    
     
     <!--[if IE]>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -19,13 +22,15 @@
 <body>
     
     <div id="simonBody">
-        <div class="gamePiece" id="simonTouchOne"></div>
+        <div id="groupedGamePieces">
+            <div class="gamePiece" id="simonTouchOne"></div>
         <div class="gamePiece" id="simonTouchTwo"></div>
         <div class="gamePiece" id="simonTouchThree"></div>
         <div class="gamePiece" id="simonTouchFour"></div>
+        </div>
         <div id="simonControlPanel">
             <h1>Simon</h1>
-            <div id="outputScreen"><p>00</p></div>
+            <div id="outputScreen"><p>02</p></div>
             <button type="button" id="startResetButton"></button>
             <button type="button" id="strictModeButton"></button>
             <button type="button" id="dangerButton"></button>
@@ -35,6 +40,7 @@
     
     
 <!--    scripts    -->
+    <script src="https://use.fontawesome.com/f47cb7fe7f.js"></script>
     <script type="application/javascript" src="js/gameLogic.js"></script>
     <script type="application/javascript" src="js/userInterface.js"></script>
 </body>
