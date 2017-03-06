@@ -23,7 +23,7 @@ html, body {
 /* control panel and buttons */
 #simonControlPanel{
     border: 2px solid black;
-    background-color: black;
+    background: radial-gradient(rgba(50,50,50,1), rgba(0,0,0,1));
     border-radius: 100%;
     height: 40vh;
     width: 40vh;
