@@ -7,6 +7,10 @@ html, body {
 
 /*game layout*/
 
+@media (min-width: 801px){
+    
+
+
 #simonBody {
     border: 2px solid black;
     border-radius: 100%;
@@ -43,7 +47,7 @@ html, body {
 }
 
 #outputScreen {
-    background-color: rgba(50,50,50,1);
+    background-color: rgba(100,100,100,.5);
     width: 125px;
     height: 50px;
     text-align: center;
@@ -51,9 +55,9 @@ html, body {
     left: 50%;
     transform: translateX(-50%);
     top: 42%;
-    border: 2px solid rgba(100,100,100,1);
+    border: 2px solid rgba(220,220,220,1);
     border-radius: 5%;
-    box-shadow: inset 1px 1px 5px 2px rgba(50,50,50,.5);
+    box-shadow: inset 1px 1px 20px 5px rgba(200,200,100,.2);
     
 }
 
@@ -197,4 +201,6 @@ html, body {
     width: 100%;
     background-color: transparent;
     z-index: -100000;
+}
+    
 }

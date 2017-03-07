@@ -1,0 +1,376 @@
+/* responsive */
+
+
+@media(max-width: 800px) and (orientation: landscape){
+    html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: black;
+}
+    
+    #simonBody {
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    bottom: 0;
+}
+
+
+/* control panel and buttons */
+#simonControlPanel{
+    border: 2px solid black;
+    background: radial-gradient(rgba(50,50,50,1), rgba(0,0,0,1));
+    height: 100vh;
+    width: 43vw;
+    position: absolute;
+    z-index: -100;
+    top: 0;
+    box-shadow: 1px 1px 50px 10px rgba(50,50,50,.3);
+}
+
+#simonControlPanel h1 {
+    color: rgba(250,240,250,1);
+    text-align: center;
+    font-size: 3.5em;
+    letter-spacing: .075em;
+    margin-top: 0.05em;
+}
+
+#outputScreen {
+    background-color: rgba(100,100,100,.5);
+    width: 125px;
+    height: 50px;
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 30%;
+    border: 2px solid rgba(220,220,220,1);
+    border-radius: 5%;
+    box-shadow: inset 1px 1px 20px 5px rgba(200,200,100,.2);
+    
+}
+
+#outputScreen p {
+    font-family: 'Share Tech Mono', monospace;
+    font-weight: regular;
+    font-size: 3em;
+    position: absolute;
+    top: 0%;
+    left: 20%;
+    padding: 0px;
+    margin: 0;
+    color: rgba(235,235,235,1);
+    letter-spacing: .3em;
+}
+
+#startResetButton {
+    background-color: rgba(76,227,95,1);
+    border-radius: 100%;
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    left: 15%;
+    top: 60%;
+    border: 3px solid rgba(100,100,100,.3);
+    box-shadow: inset 2px 2px 5px 3px rgba(50,50,50,.3);
+}
+
+#strictModeButton {
+    background-color: rgba(255,254,107,1);
+    border-radius: 100%;
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    left: 40%;
+    top: 60%;
+    border: 3px solid rgba(100,100,100,.3);
+    box-shadow: inset 2px 2px 5px 3px rgba(50,50,50,.3);
+}
+
+#dangerButton{
+    background-color: rgba(255,84,81,1);
+    border-radius: 100%;
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    right: 15%;
+    top: 60%;
+    border: 3px solid rgba(100,100,100,.3);
+    box-shadow: inset 2px 2px 5px 3px rgba(50,50,50,.3);
+}
+
+#dangerButton:active {
+    background-color: rgba(245,80,81,1);
+    border-radius: 100%;
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    right: 15%;
+    top: 60%;
+    border: 3px solid rgba(100,100,100,.3);
+    box-shadow: inset 2px 2px 5px 5px rgba(50,50,50,.3);
+}
+
+#strictModeButton:active {
+    background-color: rgba(245,245,107,1);
+    border-radius: 100%;
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    left: 40%;
+    top: 60%;
+    border: 3px solid rgba(100,100,100,.3);
+    box-shadow: inset 2px 2px 5px 5px rgba(50,50,50,.3);
+}
+
+#startResetButton:active {
+    background-color: rgba(65,215,95,1);
+    border-radius: 100%;
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    left: 15%;
+    top: 60%;
+    border: 3px solid rgba(100,100,100,.3);
+    box-shadow: inset 2px 2px 5px 5px rgba(50,50,50,.3);
+}
+
+    
+/* game touch buttons */
+
+
+.gamePiece {
+    height: 50%;
+    width: 50%;
+    position: absolute;
+    border: 1px solid rgba(50,50,50,1);
+    box-shadow: inset 1px 1px 50px 10px rgba(50,50,50,.3);
+}
+
+#simonTouchOne {
+    background-color: rgba(45,139,204,1);
+    
+    left: 0%;
+    top: 0%;
+    
+    
+}
+
+#simonTouchTwo {
+    background-color: rgba(255,84,81,1);
+    right: 0%;
+    top: 0%;
+}
+
+#simonTouchThree {
+    background-color: rgba(255,254,107,1);
+    bottom: 0%;
+    left: 0%;
+}
+
+#simonTouchFour {
+    background-color: rgba(76,227,95,1);
+    bottom: 0%;
+    right: 0%;
+}
+
+#groupedGamePieces {
+    transform: rotate(0deg);
+    height: 100vh;
+    width: 100vh;
+    background-color: transparent;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+}
+
+
+@media (max-width: 800px) and (orientation: portrait){
+    
+    html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: black;
+}
+    
+    #simonBody {
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    bottom: 0;
+}
+
+
+/* control panel and buttons */
+#simonControlPanel{
+    border: 2px solid black;
+    background: radial-gradient(rgba(50,50,50,1), rgba(0,0,0,1));
+    height: 40vh;
+    width: 100vw;
+    position: absolute;
+    z-index: -100;
+    top: 0;
+    box-shadow: 1px 1px 50px 10px rgba(50,50,50,.3);
+}
+
+#simonControlPanel h1 {
+    color: rgba(250,240,250,1);
+    text-align: center;
+    font-size: 3.5em;
+    letter-spacing: .075em;
+    margin-top: 0.05em;
+}
+
+#outputScreen {
+    background-color: rgba(100,100,100,.5);
+    width: 125px;
+    height: 50px;
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 30%;
+    border: 2px solid rgba(220,220,220,1);
+    border-radius: 5%;
+    box-shadow: inset 1px 1px 20px 5px rgba(200,200,100,.2);
+    
+}
+
+#outputScreen p {
+    font-family: 'Share Tech Mono', monospace;
+    font-weight: regular;
+    font-size: 3em;
+    position: absolute;
+    top: 0%;
+    left: 20%;
+    padding: 0px;
+    margin: 0;
+    color: rgba(235,235,235,1);
+    letter-spacing: .3em;
+}
+
+#startResetButton {
+    background-color: rgba(76,227,95,1);
+    border-radius: 100%;
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    left: 15%;
+    top: 60%;
+    border: 3px solid rgba(100,100,100,.3);
+    box-shadow: inset 2px 2px 5px 3px rgba(50,50,50,.3);
+}
+
+#strictModeButton {
+    background-color: rgba(255,254,107,1);
+    border-radius: 100%;
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    left: 43%;
+    top: 60%;
+    border: 3px solid rgba(100,100,100,.3);
+    box-shadow: inset 2px 2px 5px 3px rgba(50,50,50,.3);
+}
+
+#dangerButton{
+    background-color: rgba(255,84,81,1);
+    border-radius: 100%;
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    right: 15%;
+    top: 60%;
+    border: 3px solid rgba(100,100,100,.3);
+    box-shadow: inset 2px 2px 5px 3px rgba(50,50,50,.3);
+}
+
+#dangerButton:active {
+    background-color: rgba(245,80,81,1);
+    border-radius: 100%;
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    right: 15%;
+    top: 60%;
+    border: 3px solid rgba(100,100,100,.3);
+    box-shadow: inset 2px 2px 5px 5px rgba(50,50,50,.3);
+}
+
+#strictModeButton:active {
+    background-color: rgba(245,245,107,1);
+    border-radius: 100%;
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    left: 43%;
+    top: 60%;
+    border: 3px solid rgba(100,100,100,.3);
+    box-shadow: inset 2px 2px 5px 5px rgba(50,50,50,.3);
+}
+
+#startResetButton:active {
+    background-color: rgba(65,215,95,1);
+    border-radius: 100%;
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    left: 15%;
+    top: 60%;
+    border: 3px solid rgba(100,100,100,.3);
+    box-shadow: inset 2px 2px 5px 5px rgba(50,50,50,.3);
+}
+
+    
+/* game touch buttons */
+
+
+.gamePiece {
+    height: 50%;
+    width: 50%;
+    position: absolute;
+    border: 1px solid rgba(50,50,50,1);
+    box-shadow: inset 1px 1px 50px 10px rgba(50,50,50,.3);
+}
+
+#simonTouchOne {
+    background-color: rgba(45,139,204,1);
+    
+    left: 0%;
+    top: 0%;
+    
+    
+}
+
+#simonTouchTwo {
+    background-color: rgba(255,84,81,1);
+    right: 0%;
+    top: 0%;
+}
+
+#simonTouchThree {
+    background-color: rgba(255,254,107,1);
+    bottom: 0%;
+    left: 0%;
+}
+
+#simonTouchFour {
+    background-color: rgba(76,227,95,1);
+    bottom: 0%;
+    right: 0%;
+}
+
+#groupedGamePieces {
+    transform: rotate(0deg);
+    height: 100vw;
+    width: 100vw;
+    background-color: transparent;
+    position: absolute;
+    bottom: 0;
+}
+    
+}

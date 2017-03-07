@@ -12,5 +12,7 @@ $(document).ready(function(){
         $("#groupedGamePieces").css("transform", "rotate("+boardRotation+"deg)");
         
         $("#outputScreen p").text(boardRotation);
+        
     });
+    
 }); // doc ready
