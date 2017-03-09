@@ -55,16 +55,23 @@ var Logic = function(){
       }    
     };
     
+    // seq complete
     function seqComplete(){
         counter = 0;
         modifyUserTurn();
         // playback chime and message
     }
     
+    // game won
     function gameWon(){
         // game won animation and audio seq
         // reset game
     }
+    
+    
+    // keys and colors
+    
+    
     
     // add new move to seq
     this.addMove  = function(){
