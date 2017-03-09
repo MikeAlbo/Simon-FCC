@@ -34,11 +34,11 @@ var Logic = function(){
     
     function selectPiece(piece, type){ // type defines add/ remove
         switch(piece){
-            case 1 : console.log("blue");
-            case 2 : console.log("red");
-            case 3 : console.log("yellow");
-            case 4 : console.log("green");
-            default : console.log("bad piece");
+            case 1 : console.log("blue"); break;
+            case 2 : console.log("red"); break;
+            case 3 : console.log("yellow"); break;
+            case 4 : console.log("green"); break;
+            default : console.log("bad piece"); break;
         }
     }
     

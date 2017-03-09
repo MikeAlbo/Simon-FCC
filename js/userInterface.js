@@ -31,11 +31,11 @@ $(document).ready(function(){
             break;
             case 40: keyTestFunction("down");
             break;
-            case 83: keyTestFunction("s")
+            case 83: keyTestFunction("s"); createNewGame();
             break;
-            case 68: keyTestFunction("d");
+            case 68: keyTestFunction("d"); modifyDangerMode();
             break;
-            case 88: keyTestFunction("x");
+            case 88: keyTestFunction("x"); modifyStrictMode();
             break;
             default: return;
         }
@@ -45,24 +45,44 @@ $(document).ready(function(){
         console.log("key: " + e);
     }
     
+    // start button
+    $(startButton).click(function(){
+        createNewGame();
+    });
+    
     
     // strict button
     
     $(strictButton).click(function(){
-        if(!newGame){
-            // create a new game
-        }
-        newGame.strictMode();
+        modifyStrictMode();
     });
     
     // danger button 
     $(dangerButton).click(function(){
+        modifyDangerMode();
+    });
+    
+    
+    // create a new game
+    function createNewGame(){
+        newGame = new Logic();
+        console.log("new game created");
+    }
+    
+    // handle strict mode
+    function modifyStrictMode(){
         if(!newGame){
-            // create new game
+            createNewGame();
+        }
+        newGame.strictMode();
+    }
+    
+    // handle danger mode
+    function modifyDangerMode(){
+        if(!newGame){
+           createNewGame();
         }
         newGame.dangerMode();
-    })
-    
-    
+    }
     
 }); // doc ready
