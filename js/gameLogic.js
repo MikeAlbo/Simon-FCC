@@ -5,6 +5,7 @@ var Logic = function(){
         data = [],
         gameSpeed = 1000,
         duration = 1000,
+        userClickSpeed = 100,
         dangerMode = false,
         strictMode = false,
         startGame = false,
@@ -32,12 +33,12 @@ var Logic = function(){
     
     // select playback piece
     
-    function selectPiece(piece, type){ // type defines add/ remove
+    function selectPiece(piece, type, button){ // type defines add/ remove
         switch(piece){
-            case 1 : console.log("blue"); break;
-            case 2 : console.log("red"); break;
-            case 3 : console.log("yellow"); break;
-            case 4 : console.log("green"); break;
+            case 1 : console.log("blue"); buttonModClass(type, button); break;
+            case 2 : console.log("red");  buttonModClass(type, button);  break;
+            case 3 : console.log("yellow"); buttonModClass(type, button); break;
+            case 4 : console.log("green"); buttonModClass(type, button);break;
             default : console.log("bad piece"); break;
         }
     }
@@ -68,8 +69,25 @@ var Logic = function(){
         // reset game
     }
     
+    // user clicks button
+    function userClicks(move, button){
+        selectPiece(move, "add", button);
+        setTimeout(function(){
+           return selectPiece(move, "remove", button);
+        }, userClickSpeed);
+    }
+    
     
     // keys and colors
+    
+    // btn modify class
+    function buttonModClass(type, button){
+        if(type == "add"){
+            button.addClass("buttonActive");
+        } else {
+            button.removeClass("buttonActive");
+        }
+    }
     
     
     
@@ -99,8 +117,9 @@ var Logic = function(){
     
     // user seqValidator
     
-    this.seqValidator = function(move){
+    this.seqValidator = function(move, button){
         if(userTurn){
+            userClicks(move, button);
             if(move == data[counter]){
                counter++; 
             } else {
@@ -113,7 +132,7 @@ var Logic = function(){
         }
         
         if(counter == data.length){
-            return seqCompelete();
+            return seqComplete();
         }
     }
     
