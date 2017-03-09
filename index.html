@@ -22,6 +22,32 @@
     
 <body>
     
+<!--    game load message-->
+    
+    
+    <div id="gameLoadMessage">
+        <p>Welcome to the game.</p>
+        <div class="welcomeList" id="rules">
+        <ul>
+            <li>Repeat the given pattern.</li>
+            <li>The game speed will <br> quicken as you progress.</li>
+            <li>When you complete 20, <br>you win!</li>
+            </ul>
+        </div>
+        
+        <div class="welcomeList" id="feature">
+        <ul>
+            <li style="color:lightgreen;">Regular Mode :Get'r Done!</li>
+            <li style="color:yellow;">Strict Mode : no mistakes!</li>
+            <li style="color:lightcoral;">Danger Mode : make things interesting!</li>
+            
+            </ul>
+        </div>
+        <button type="button" id="playButton">Play!</button>
+    </div>
+    
+    <h1>Simon</h1>
+    
     <div id="simonBody">
         <div id="groupedGamePieces">
             <div class="gamePiece" id="simonTouchOne"></div>
@@ -30,7 +56,6 @@
             <div class="gamePiece" id="simonTouchFour"></div>
         </div>
         <div id="simonControlPanel">
-            <h1>Simon</h1>
             <div id="outputScreen"><p>02</p></div>
             <button type="button" id="startResetButton"></button>
             <button type="button" id="strictModeButton"></button>
