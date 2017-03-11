@@ -26,7 +26,9 @@ var Logic = function(){
     
     // timeout for seq speed
     function seqSpeed(e){
+        console.log("e: " + e);
         setTimeout(function(){
+            console.log("seqSpeed: " + e++);
             return e++;
         }, gameSpeed);
     }
@@ -34,12 +36,11 @@ var Logic = function(){
     // select playback piece
     
     function selectPiece(piece, type){ // type defines add/ remove
-        console.log("select piece: ", piece);
         switch(piece){
-            case 1 : blueBtn(type); break;
-            case 2 : redBtn(type);  break;
-            case 3 : yellowBtn(type); break;
-            case 4 : greenBtn(type);break;
+            case 1 : console.log("blue"); break;
+            case 2 : console.log("red");  break;
+            case 3 : console.log("yellow"); break;
+            case 4 : console.log("green");break;
             default : console.log("bad piece: ", piece ); break;
         }
     }
@@ -78,81 +79,57 @@ var Logic = function(){
         }, userClickSpeed);
     }
     
-    
-    // keys and colors
-    
-    // blue btn
-    function blueBtn(type, button){
-//        if(type == "add"){
-//            $(blue).addClass("blueActive");
-//        } else {
-//            $(blue).removeClass("blueActive");
-//        }
-        console.log("button : " + button + "type: " + type);
-    }
-    
-      // red btn
-    function redBtn(type, button){
-//        if(type == "add"){
-//            $(red).addClass("redActive");
-//        } else {
-//            $(red).removeClass("redActive");
-//        }
-        
-        console.log("button : " + button + "type: " + type);
-    }
-    
-      // yellow btn
-    function yellowBtn(type, button){
-//        console.log("yellowBtn");
-//        if(type == "add"){
-//            $(yellow).addClass("yellowActive");
-//            console.log("yellowBtn add");
-//        } else {
-//            $(yellow).removeClass("yellowActive");
-//            console.log("yellowBtn remove");
-//        }
-        console.log("button : " + button + "type: " + type);
-    }
-    
-      // green btn
-    function greenBtn(type, button){
-//        if(type == "add"){
-//           $(green).addClass("greenActive");
-//        } else {
-//            $(green).removeClass("greenActive");
-//        }
-        
-        console.log("button : " + button + "type: " + type);
-    }
-    
-    
-    
     // add new move to seq
     function addMove(){
         data.push(newMove());
+        console.log("add move: ");
         console.log(data);
     };
     
     // playback seq
     
-    function seqPlayback(){
-        var playback = true;
-        var i = 1;
-        while(playback){
-            console.log("seq playback: ",data[i -1]);
-            selectPiece(data[i -1], "add");
-            durationTimeout(selectPiece(data[i -1], "remove"));
-            if(i < data.length) {
-                i = seqSpeed(i);   
-            } else {
-                modifyUserTurn();
-                return !playback;
-            }
-        } 
-        return;   
-    };  // seq playback
+//    function seqPlayback(){
+//        console.log("seq playback");
+//        var playback = true;
+//        var i = 1;
+//        console.log("while outside of while loop: " + i);
+//        while(playback){
+//            console.log("i entering while loop: " + i);
+//            console.log(data[i -1]);
+//            selectPiece(data[i -1], "add");
+//            durationTimeout(selectPiece(data[i -1], "remove"));
+//            if(i < data.length) {
+//                setTimeout(function(){
+//                    i++;
+//                    console.log("inside of timeout: " + i);
+//                }, gameSpeed);
+//            } else {
+//                modifyUserTurn();
+//                return !playback;
+//            }
+//        } 
+//        return;   
+//    };  // seq playback
     
+    function seqPlayback(){
+        for(var i = 0; i < data.length; i++){
+            setTimeout(function(){
+                selectPiece(data[i - 1], "add");
+                durationTimeout(selectPiece(data[i - 1], "remove"));
+            }, gameSpeed);
+        }
+        
+        modifyUserTurn();
+    } // seq playback 
+    
+    // ai turn
+    function aiTurn(){
+        addMove();
+        seqPlayback();
+    }
+    
+    
+    // init  the game via userInterface
     this.initGame = function(){
         addMove();
         seqPlayback();
@@ -162,7 +139,6 @@ var Logic = function(){
     // user seqValidator
     
     this.seqValidator = function(move){
-        console.log(userTurn);
         if(userTurn){
             userClicks(move);
             if(move == data[counter]){
@@ -177,7 +153,9 @@ var Logic = function(){
         }
         
         if(counter == data.length){
-            return seqComplete();
+            seqComplete();
+            aiTurn();
+            
         }
     }
     
