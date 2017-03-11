@@ -4,7 +4,7 @@ var Logic = function(){
     var counter = 0,
         data = [],
         gameSpeed = 1000,
-        duration = 1000,
+        duration = 250,
         userClickSpeed = 100,
         dangerMode = false,
         strictMode = false,
@@ -17,30 +17,14 @@ var Logic = function(){
         return Math.ceil(Math.random() * 4);
     }
     
-    // timeout for move duration
-    function durationTimeout(e){
-        setTimeout(function(){
-            return e;
-        }, duration);
-    }
-    
-    // timeout for seq speed
-    function seqSpeed(e){
-        console.log("e: " + e);
-        setTimeout(function(){
-            console.log("seqSpeed: " + e++);
-            return e++;
-        }, gameSpeed);
-    }
-    
     // select playback piece
     
-    function selectPiece(piece, type){ // type defines add/ remove
+    function selectPiece(piece){ // type defines add/ remove
         switch(piece){
-            case 1 : console.log("blue"); break;
-            case 2 : console.log("red");  break;
-            case 3 : console.log("yellow"); break;
-            case 4 : console.log("green");break;
+            case 1 : blueButtonAnimation(duration); break;
+            case 2 : redButtonAnimation(duration);  break;
+            case 3 : yellowButtonAnimation(duration); break;
+            case 4 : greenButtonAnimation(duration);break;
             default : console.log("bad piece: ", piece ); break;
         }
     }
@@ -48,6 +32,7 @@ var Logic = function(){
     //modify user turn
     function modifyUserTurn(){
         userTurn = !userTurn;
+        console.log("user turn: " + userTurn);
     }
     
     // handle error input
@@ -62,6 +47,7 @@ var Logic = function(){
     function seqComplete(){
         counter = 0;
         modifyUserTurn();
+        aiTurn();
         // playback chime and message
     }
     
@@ -73,54 +59,51 @@ var Logic = function(){
     
     // user clicks button
     function userClicks(move){
-        selectPiece(move, "add");
-        setTimeout(function(){
-           return selectPiece(move, "remove");
-        }, userClickSpeed);
+        selectPiece(move);
     }
     
     // add new move to seq
     function addMove(){
-        data.push(newMove());
-        console.log("add move: ");
-        console.log(data);
+        return data.push(newMove());
     };
     
     // playback seq
     
 //    function seqPlayback(){
-//        console.log("seq playback");
-//        var playback = true;
-//        var i = 1;
-//        console.log("while outside of while loop: " + i);
-//        while(playback){
-//            console.log("i entering while loop: " + i);
-//            console.log(data[i -1]);
-//            selectPiece(data[i -1], "add");
-//            durationTimeout(selectPiece(data[i -1], "remove"));
-//            if(i < data.length) {
-//                setTimeout(function(){
-//                    i++;
-//                    console.log("inside of timeout: " + i);
-//                }, gameSpeed);
-//            } else {
-//                modifyUserTurn();
-//                return !playback;
-//            }
-//        } 
-//        return;   
-//    };  // seq playback
+//        var i = 0;
+//        console.log("data: " + data);
+//        setInterval(function(){
+//           if(i >= data.length){
+//               console.log("setInterval");
+//               clearInterval();
+//           } else {
+//                console.log("data[i]: called on selectPiece: " + data[i]);
+//                selectPiece(data[i]);
+//                i++;
+//           }
+//        }, gameSpeed);
+//        
+//        modifyUserTurn();
+//    } // seq playback 
+    
+    
+    // seq playback
     
     function seqPlayback(){
-        for(var i = 0; i < data.length; i++){
-            setTimeout(function(){
-                selectPiece(data[i - 1], "add");
-                durationTimeout(selectPiece(data[i - 1], "remove"));
-            }, gameSpeed);
+        var i = 0;
+        var interval = setInterval(move, gameSpeed);
+        function move(){
+            if(i == data.length) {
+                clearInterval(interval);
+                modifyUserTurn();
+            } else {
+                selectPiece(data[i]);
+                i++;
+                console.log("move");
+            }
         }
         
-        modifyUserTurn();
-    } // seq playback 
+    }
     
     // ai turn
     function aiTurn(){
@@ -137,8 +120,7 @@ var Logic = function(){
     
     
     // user seqValidator
-    
-    this.seqValidator = function(move){
+       this.seqValidator = function(move){
         if(userTurn){
             userClicks(move);
             if(move == data[counter]){
@@ -154,8 +136,6 @@ var Logic = function(){
         
         if(counter == data.length){
             seqComplete();
-            aiTurn();
-            
         }
     }
     
