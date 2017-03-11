@@ -11,17 +11,7 @@ var Logic = function(){
         startGame = false,
         userTurn = false;
     
-    var blue, red, yellow, green;
     
-    this.setButtons = function(blue, red, yellow, green){
-        blue = blue;
-        red = red;
-        yellow = yellow;
-        green = green;
-        console.log(blue, red, yellow, green);
-    }
-    
-
     // generate a new move
     function newMove(){
         return Math.ceil(Math.random() * 4);
@@ -93,58 +83,64 @@ var Logic = function(){
     
     // blue btn
     function blueBtn(type, button){
-        if(type == "add"){
-            $(blue).addClass("blueActive");
-        } else {
-            $(blue).removeClass("blueActive");
-        }
+//        if(type == "add"){
+//            $(blue).addClass("blueActive");
+//        } else {
+//            $(blue).removeClass("blueActive");
+//        }
+        console.log("button : " + button + "type: " + type);
     }
     
       // red btn
     function redBtn(type, button){
-        if(type == "add"){
-            $(red).addClass("redActive");
-        } else {
-            $(red).removeClass("redActive");
-        }
+//        if(type == "add"){
+//            $(red).addClass("redActive");
+//        } else {
+//            $(red).removeClass("redActive");
+//        }
+        
+        console.log("button : " + button + "type: " + type);
     }
     
       // yellow btn
     function yellowBtn(type, button){
-        console.log("yellowBtn");
-        if(type == "add"){
-            $(yellow).addClass("yellowActive");
-            console.log("yellowBtn add");
-        } else {
-            $(yellow).removeClass("yellowActive");
-            console.log("yellowBtn remove");
-        }
+//        console.log("yellowBtn");
+//        if(type == "add"){
+//            $(yellow).addClass("yellowActive");
+//            console.log("yellowBtn add");
+//        } else {
+//            $(yellow).removeClass("yellowActive");
+//            console.log("yellowBtn remove");
+//        }
+        console.log("button : " + button + "type: " + type);
     }
     
       // green btn
     function greenBtn(type, button){
-        if(type == "add"){
-           $(green).addClass("greenActive");
-        } else {
-            $(green).removeClass("greenActive");
-        }
+//        if(type == "add"){
+//           $(green).addClass("greenActive");
+//        } else {
+//            $(green).removeClass("greenActive");
+//        }
+        
+        console.log("button : " + button + "type: " + type);
     }
     
     
     
     // add new move to seq
-    this.addMove  = function(){
+    function addMove(){
         data.push(newMove());
         console.log(data);
     };
     
     // playback seq
     
-    this.seqPlayback = function(){
+    function seqPlayback(){
         var playback = true;
         var i = 1;
         while(playback){
-            console.log("seq playback: ",data[i]);
+            console.log("seq playback: ",data[i -1]);
             selectPiece(data[i -1], "add");
             durationTimeout(selectPiece(data[i -1], "remove"));
             if(i < data.length) {
@@ -156,6 +152,11 @@ var Logic = function(){
         } 
         return;   
     };  // seq playback
+    
+    this.initGame = function(){
+        addMove();
+        seqPlayback();
+    }
     
     
     // user seqValidator

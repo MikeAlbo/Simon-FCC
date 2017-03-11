@@ -88,12 +88,10 @@ $(document).ready(function(){
     // create a new game
     function createNewGame(){
         newGame = new Logic();
-        newGame.setButtons(buttonOne, buttonTwo, buttonThree, buttonFour);
         // new game message scroll with countdown
         setTimeout(function(){
-            newGame.addMove();
-            newGame.seqPlayback();
-        }, 500);
+            newGame.initGame();
+        }, 200);
         console.log("new game created");
     }
     
