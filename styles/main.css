@@ -281,8 +281,20 @@ h1 {
     z-index: -100000;
 }
     
-    .buttonActive {
+    .blueActive {
         box-shadow: inset 20px 50px 50px 1px rgba(220,220,220,.8);
-    }    
+    }  
+    
+    .redActive {
+        box-shadow: inset 20px 50px 50px 1px rgba(220,220,220,.8);
+    } 
+    
+    .greenActive {
+        box-shadow: inset 20px 50px 50px 1px rgba(220,220,220,.8);
+    } 
+    
+    .yellowActive {
+        box-shadow: inset 20px 50px 50px 1px rgba(220,220,220,.8);
+    } 
     
 }

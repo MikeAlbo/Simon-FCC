@@ -11,10 +11,20 @@ var Logic = function(){
         startGame = false,
         userTurn = false;
     
+    var blue, red, yellow, green;
+    
+    this.setButtons = function(blue, red, yellow, green){
+        blue = blue;
+        red = red;
+        yellow = yellow;
+        green = green;
+        console.log(blue, red, yellow, green);
+    }
+    
 
     // generate a new move
     function newMove(){
-        return Math.ceil(Math.random * 4);
+        return Math.ceil(Math.random() * 4);
     }
     
     // timeout for move duration
@@ -33,13 +43,14 @@ var Logic = function(){
     
     // select playback piece
     
-    function selectPiece(piece, type, button){ // type defines add/ remove
+    function selectPiece(piece, type){ // type defines add/ remove
+        console.log("select piece: ", piece);
         switch(piece){
-            case 1 : console.log("blue"); buttonModClass(type, button); break;
-            case 2 : console.log("red");  buttonModClass(type, button);  break;
-            case 3 : console.log("yellow"); buttonModClass(type, button); break;
-            case 4 : console.log("green"); buttonModClass(type, button);break;
-            default : console.log("bad piece"); break;
+            case 1 : blueBtn(type); break;
+            case 2 : redBtn(type);  break;
+            case 3 : yellowBtn(type); break;
+            case 4 : greenBtn(type);break;
+            default : console.log("bad piece: ", piece ); break;
         }
     }
     
@@ -49,7 +60,7 @@ var Logic = function(){
     }
     
     // handle error input
-    function erroInput(){
+    function errorInput(){
         // playback piece audio (error tone) and flash piece
       if(strictMode){
           //reset game
@@ -70,22 +81,52 @@ var Logic = function(){
     }
     
     // user clicks button
-    function userClicks(move, button){
-        selectPiece(move, "add", button);
+    function userClicks(move){
+        selectPiece(move, "add");
         setTimeout(function(){
-           return selectPiece(move, "remove", button);
+           return selectPiece(move, "remove");
         }, userClickSpeed);
     }
     
     
     // keys and colors
     
-    // btn modify class
-    function buttonModClass(type, button){
+    // blue btn
+    function blueBtn(type, button){
         if(type == "add"){
-            button.addClass("buttonActive");
+            $(blue).addClass("blueActive");
         } else {
-            button.removeClass("buttonActive");
+            $(blue).removeClass("blueActive");
+        }
+    }
+    
+      // red btn
+    function redBtn(type, button){
+        if(type == "add"){
+            $(red).addClass("redActive");
+        } else {
+            $(red).removeClass("redActive");
+        }
+    }
+    
+      // yellow btn
+    function yellowBtn(type, button){
+        console.log("yellowBtn");
+        if(type == "add"){
+            $(yellow).addClass("yellowActive");
+            console.log("yellowBtn add");
+        } else {
+            $(yellow).removeClass("yellowActive");
+            console.log("yellowBtn remove");
+        }
+    }
+    
+      // green btn
+    function greenBtn(type, button){
+        if(type == "add"){
+           $(green).addClass("greenActive");
+        } else {
+            $(green).removeClass("greenActive");
         }
     }
     
@@ -94,16 +135,18 @@ var Logic = function(){
     // add new move to seq
     this.addMove  = function(){
         data.push(newMove());
+        console.log(data);
     };
     
     // playback seq
     
     this.seqPlayback = function(){
         var playback = true;
-        var i = 0;
+        var i = 1;
         while(playback){
-            selectPiece(data[i], "add");
-            durationTimeout(selectPiece(data[i], "remove"));
+            console.log("seq playback: ",data[i]);
+            selectPiece(data[i -1], "add");
+            durationTimeout(selectPiece(data[i -1], "remove"));
             if(i < data.length) {
                 i = seqSpeed(i);   
             } else {
@@ -117,13 +160,14 @@ var Logic = function(){
     
     // user seqValidator
     
-    this.seqValidator = function(move, button){
+    this.seqValidator = function(move){
+        console.log(userTurn);
         if(userTurn){
-            userClicks(move, button);
+            userClicks(move);
             if(move == data[counter]){
                counter++; 
             } else {
-                handleErrorInput();
+                errorInput();
             }
         }
         
@@ -147,6 +191,11 @@ var Logic = function(){
     // danger mode
     this.dangerMode = function(){
         dangerMode = !dangerMode;
+    }
+    
+    // return data object
+    this.getData = function(){
+        return data;
     }
     
 } // logic constructor

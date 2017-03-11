@@ -23,27 +23,24 @@ $(document).ready(function(){
     
     $(document).keydown(function(e){
         switch(e.which){
-            case 37: keyTestFunction("left"); handlePieceFour();
+            case 37: handlePieceFour();
             break;
-            case 38: keyTestFunction("up"); handlePieceOne();
+            case 38: handlePieceOne();
             break;
-            case 39: keyTestFunction("right"); handlePieceTwo();
+            case 39: handlePieceTwo();
             break;
-            case 40: keyTestFunction("down"); handlePieceThree();
+            case 40: handlePieceThree();
             break;
-            case 83: keyTestFunction("s"); createNewGame();
+            case 83: createNewGame();
             break;
-            case 68: keyTestFunction("d"); modifyDangerMode();
+            case 68: modifyDangerMode();
             break;
-            case 88: keyTestFunction("x"); modifyStrictMode();
+            case 88: modifyStrictMode();
             break;
             default: return;
         }
     });
     
-    function keyTestFunction(e){
-        console.log("key: " + e);
-    }
     
     // start button
     $(startButton).click(function(){
@@ -91,6 +88,12 @@ $(document).ready(function(){
     // create a new game
     function createNewGame(){
         newGame = new Logic();
+        newGame.setButtons(buttonOne, buttonTwo, buttonThree, buttonFour);
+        // new game message scroll with countdown
+        setTimeout(function(){
+            newGame.addMove();
+            newGame.seqPlayback();
+        }, 500);
         console.log("new game created");
     }
     
@@ -113,28 +116,28 @@ $(document).ready(function(){
     // handle piece one
     function handlePieceOne(){
         if(newGame){
-            newGame.seqValidator(1, buttonOne);
+            newGame.seqValidator(1);
         }
     }
     
     // handle piece two
     function handlePieceTwo(){
         if(newGame){
-            newGame.seqValidator(2, buttonTwo);
+            newGame.seqValidator(2);
         }
     }
     
     // handle piece Three
     function handlePieceThree(){
         if(newGame){
-            newGame.seqValidator(3, buttonThree);
+            newGame.seqValidator(3);
         }
     }
     
     // handle piece four
     function handlePieceFour(){
         if(newGame){
-            newGame.seqValidator(4, buttonFour);
+            newGame.seqValidator(4);
         }
     }
     
