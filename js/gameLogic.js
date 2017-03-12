@@ -24,7 +24,7 @@ var Logic = function(){
             case 1 : blueButtonAnimation(duration); break;
             case 2 : redButtonAnimation(duration);  break;
             case 3 : yellowButtonAnimation(duration); break;
-            case 4 : greenButtonAnimation(duration);break;
+            case 4 : greenButtonAnimation(duration);  break;
             default : console.log("bad piece: ", piece ); break;
         }
     }

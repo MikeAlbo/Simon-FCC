@@ -19,6 +19,12 @@ $(document).ready(function(){
 //    var strictButton = $("#strictModeButton");
 //    var dangerButton = $("#dangerButton");
     
+    //var audio = new (window.AudioContext || window.webkitAudioContext)();
+    
+    
+
+   
+    
     // keyboard listener;
     
     $(document).keydown(function(e){
