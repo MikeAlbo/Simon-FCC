@@ -59,6 +59,7 @@ var Logic = function(){
     
     // user clicks button
     function userClicks(move){
+        playSound(move);
         selectPiece(move);
     }
     
@@ -97,6 +98,7 @@ var Logic = function(){
                 clearInterval(interval);
                 modifyUserTurn();
             } else {
+                playSound(data[i]);
                 selectPiece(data[i]);
                 i++;
                 console.log("move");
