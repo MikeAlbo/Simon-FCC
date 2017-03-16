@@ -78,6 +78,20 @@ function AudioLoadBuffer(source){
 var newAudio = new AudioLoadBuffer(audioSources);
 newAudio.loadData();
 
+
+// create web audio api context
+var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+// create error tone
+function errorTone(){
+    var oscillator = audioCtx.createOscillator();
+    oscillator.connect(audioCtx.destination);
+    oscillator.frequency.value = 50;
+    oscillator.type = "square"; 
+    oscillator.start();
+    oscillator.stop(audioCtx.currentTime + .75); 
+}
+
 // =========  interface with audio playback ==========
 
 

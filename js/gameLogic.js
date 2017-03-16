@@ -36,13 +36,29 @@ var Logic = function(){
     }
     
     // handle error input
-    function errorInput(){
+    function errorInput(input){
         // playback piece audio (error tone) and flash piece
+       setTimeout(function(){
+            selectPiece(input);
+            errorTone();
+            modifyUserTurn();
+            seqPlayback();
+            counter = 0;
+       }, 500);
+        // message output
+        
       if(strictMode){
-          //reset game
+          endGame();
       }    
     };
-    
+
+    // end game 
+    function endGage(){
+        // message output 
+        data = [];
+        counter = 0;
+        aiTurn();
+    }
     // seq complete
     function seqComplete(){
         counter = 0;
@@ -128,17 +144,19 @@ var Logic = function(){
             if(move == data[counter]){
                counter++; 
             } else {
-                errorInput();
+                errorInput(data[counter]);
+            }
+            
+            if(counter == 20){
+            return gameWon();
+            }
+        
+            if(counter == data.length){
+            seqComplete();
             }
         }
         
-        if(counter == 20){
-            return gameWon();
-        }
-        
-        if(counter == data.length){
-            seqComplete();
-        }
+
     }
     
     
