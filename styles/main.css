@@ -1,5 +1,27 @@
 /* css */
 
+/*
+button colors: 
+
+blue button normal: rgba(45,139,204,1);
+blue button active: rgba(61,168,242,1);
+red button normal: rgba(217,78,76,1);
+red button active:  rgba(255,84,81,1);
+yellow button normal: rgba(217,216,54,1);
+yellow button active: rgba(242,241,97,1);
+green button normal: rgba(48,191,66,1);
+green button active: rgba(34,229,5,1);
+
+start button normal: rgba(48,191,66,1);
+start button active: rgba(57,229,79,1);
+strict mode normal:
+strict mode active:
+danger mode normal:
+danger mode active:
+*use keyboard normal:
+*use keyboard active:
+*/
+
 html, body {
     font-family: 'Alfa Slab One', cursive;
 }

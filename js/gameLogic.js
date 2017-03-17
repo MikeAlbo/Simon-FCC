@@ -42,18 +42,22 @@ var Logic = function(){
             selectPiece(input);
             errorTone();
             modifyUserTurn();
-            seqPlayback();
+           
+           if(strictMode || dangerMode){
+            return endGame();
+           }    
+           
+           console.log("user error, non strict mode");
+           seqPlayback();
             counter = 0;
        }, 500);
         // message output
         
-      if(strictMode){
-          endGame();
-      }    
     };
 
     // end game 
-    function endGage(){
+    function endGame(){
+        console.log("user error, strict mode");
         // message output 
         data = [];
         counter = 0;
@@ -113,6 +117,9 @@ var Logic = function(){
             if(i == data.length) {
                 clearInterval(interval);
                 modifyUserTurn();
+                if(dangerMode) {
+                    dangerModeAnimation();
+                }
             } else {
                 playSound(data[i]);
                 selectPiece(data[i]);
@@ -165,11 +172,13 @@ var Logic = function(){
     // strict mode 
     this.strictMode = function(){
         strictMode = !strictMode;
+        console.log("strict mode: ", strictMode);
     }
     
     // danger mode
     this.dangerMode = function(){
         dangerMode = !dangerMode;
+        console.log("danger mode: ", dangerMode);
     }
     
     // return data object

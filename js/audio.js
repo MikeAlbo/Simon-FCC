@@ -65,11 +65,11 @@ function AudioLoadBuffer(source){
     } }
     
     
-    function playBack(buffer){
+    function playBack(buffer, start = 0){
     var source = context.createBufferSource();
     source.buffer = buffer;
     source.connect(context.destination);
-    source.start(0);
+    source.start(start);
 }
 
 
@@ -83,13 +83,8 @@ newAudio.loadData();
 var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
 // create error tone
-function errorTone(){
-    var oscillator = audioCtx.createOscillator();
-    oscillator.connect(audioCtx.destination);
-    oscillator.frequency.value = 50;
-    oscillator.type = "square"; 
-    oscillator.start();
-    oscillator.stop(audioCtx.currentTime + .75); 
+function errorTone(button){
+    playBack(button);
 }
 
 // =========  interface with audio playback ==========

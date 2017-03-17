@@ -54,3 +54,10 @@ function greenButtonAnimation(duration){
         setTimeout(function(){greenButtonTimeLine.reverse()}, duration);
     }
 
+
+
+// ====== danger mode animation =======
+
+function dangerModeAnimation(){
+    
+}
