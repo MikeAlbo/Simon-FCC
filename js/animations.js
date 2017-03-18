@@ -2,13 +2,22 @@
 
 // vars
 
-var animatonDuration = .1;
+var animatonDuration = .1,
+    keyboardOn = false;
 
 var blueButtonTimeLine = new TimelineLite(),
     redButtonTimeLine = new TimelineLite(),
     yellowButtonTimeLine = new TimelineLite(),
     greenButtonTimeLine = new TimelineLite(),
-    dangerModeTimeLine = new TimelineLite();
+    dangerModeTimeLine = new TimelineLite(),
+    switchAnimation = new TimelineLite(),
+    keyboardRotation = new TimelineLite();
+
+
+// iQuery links
+
+var switchDiv = $("#switch"),
+    switchBox = $("#switchBox");
 
 // blue button
 
@@ -98,11 +107,31 @@ function generateNewValue(selected){
 
 // ====== keyboard  mode animation =======
 
-//board rotation
-function keyBoardRotation(){
-    TweenLite.to(groupedGamePieces, 2, {transform: 'rotateZ(45deg)'});
+$(switchDiv).click(function(){keyboard()});
+
+//activate keyboard
+function keyboard(){
+    if(!keyboardOn){
+        keyboardRotation.play();
+        switchAnimation.play();
+    } else {
+        keyboardRotation.reverse();
+        switchAnimation.reverse();
+    }
+    
+    keyboardOn = !keyboardOn;
 }
+
+
+//board rotation
+keyboardRotation.to(groupedGamePieces, 1, {transform: 'rotateZ(45deg)'});
+keyboardRotation.pause();
 
 // fade in keyboard hints
 
 // keyboard switch animation
+
+switchAnimation.to(switchDiv, .1, {left : "50%", boxShadow: "-2px 1px 5px 1px rgba(50,50,50,.7)", backgroundColor: "rgba(92,217,26,.5)"});
+switchAnimation.pause();
+
+
