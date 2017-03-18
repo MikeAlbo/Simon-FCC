@@ -11,13 +11,16 @@ var blueButtonTimeLine = new TimelineLite(),
     greenButtonTimeLine = new TimelineLite(),
     dangerModeTimeLine = new TimelineLite(),
     switchAnimation = new TimelineLite(),
-    keyboardRotation = new TimelineLite();
+    keyboardRotation = new TimelineLite(),
+    keyboardNumberAnimation = new TimelineLite();
+    
 
 
 // iQuery links
 
 var switchDiv = $("#switch"),
-    switchBox = $("#switchBox");
+    switchBox = $("#switchBox"),
+    keyboardNumbers = $(".keyboardNumbers");
 
 // blue button
 
@@ -114,9 +117,11 @@ function keyboard(){
     if(!keyboardOn){
         keyboardRotation.play();
         switchAnimation.play();
+        keyboardNumberAnimation.play();
     } else {
         keyboardRotation.reverse();
         switchAnimation.reverse();
+        keyboardNumberAnimation.reverse();
     }
     
     keyboardOn = !keyboardOn;
@@ -128,6 +133,9 @@ keyboardRotation.to(groupedGamePieces, 1, {transform: 'rotateZ(45deg)'});
 keyboardRotation.pause();
 
 // fade in keyboard hints
+
+keyboardNumberAnimation.to(keyboardNumbers, .25, {opacity: 1}, "-=.75");
+keyboardNumberAnimation.pause();
 
 // keyboard switch animation
 

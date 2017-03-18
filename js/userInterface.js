@@ -29,14 +29,22 @@ $(document).ready(function(){
     
     $(document).keydown(function(e){
         switch(e.which){
-            case 37: handlePieceFour();
+            case 51: handlePieceFour();
             break;
-            case 38: handlePieceOne();
+            case 49: handlePieceOne();
             break;
-            case 39: handlePieceTwo();
+            case 50: handlePieceTwo();
             break;
-            case 40: handlePieceThree();
+            case 52: handlePieceThree();
             break;
+            case 99 : handlePieceFour();
+            break;
+            case 97: handlePieceOne();
+            break;
+            case 98: handlePieceTwo();
+            break;
+            case 100: handlePieceThree();
+            break;    
             case 83: createNewGame();
             break;
             case 68: modifyDangerMode();
