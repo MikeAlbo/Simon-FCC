@@ -20,7 +20,9 @@ var blueButtonTimeLine = new TimelineLite(),
 
 var switchDiv = $("#switch"),
     switchBox = $("#switchBox"),
-    keyboardNumbers = $(".keyboardNumbers");
+    keyboardNumbers = $(".keyboardNumbers"),
+    simonBody = $("#simonBody"),
+    groupedGamePieces = $("#groupedGamePieces");
 
 // blue button
 
@@ -71,21 +73,19 @@ function greenButtonAnimation(duration){
 
 // ====== danger mode animation =======
 
-var simonBody = $("#simonBody");
-var groupedGamePieces = $("#groupedGamePieces");
+
+
+dangerModeTimeLine.to(simonBody, .1, {boxShadow: "10px 15px 25px 10px rgba(244,44,76,1)"});
+dangerModeTimeLine.pause();
 
 function dangerModeAnimation(){
- 
-    dangerModeTimeLine.to(simonBody, .1, {boxShadow: "10px 15px 25px 10px rgba(244,44,76,1)"});
-    
     dangerModeTimeLine.play();
 }
 
 function dangerModeReverse(){
-    dangerModeTimeLine.to(simonBody, .5, {boxShadow: "5px 10px 25px 1px rgba(50,50,50,.8)"});
     selected = 0;
     dangerRotate(true);
-    dangerModeTimeLine.play();
+    dangerModeTimeLine.reverse();
 }
 
 var selected = 0;
@@ -93,9 +93,9 @@ var selected = 0;
 function dangerRotate(reset){
     selected += (generateNewValue(selected));
     if(reset){
-        selected = 0;
+        selected = keyboardOn ? 45 : 0;
         TweenLite.to(groupedGamePieces, 2, {transform: 'rotateZ('+selected+'deg)'});
-        TweenLite.to(groupedGamePieces, 2, {transform: 'rotateZ('+ 360 +'deg)'});
+        
     }
     
     TweenLite.to(groupedGamePieces, 2, {transform: 'rotateZ('+selected+'deg)'});
