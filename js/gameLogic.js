@@ -118,7 +118,7 @@ var Logic = function(){
                 clearInterval(interval);
                 modifyUserTurn();
                 if(dangerMode) {
-                    dangerModeAnimation();
+                    dangerRotate();
                 }
             } else {
                 playSound(data[i]);
@@ -161,6 +161,7 @@ var Logic = function(){
             if(counter == data.length){
             seqComplete();
             }
+           
         }
         
 
@@ -178,6 +179,7 @@ var Logic = function(){
     // danger mode
     this.dangerMode = function(){
         dangerMode = !dangerMode;
+        dangerMode ? dangerModeAnimation() : dangerModeReverse();
         console.log("danger mode: ", dangerMode);
     }
     
