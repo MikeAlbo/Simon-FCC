@@ -103,4 +103,6 @@ function keyBoardRotation(){
     TweenLite.to(groupedGamePieces, 2, {transform: 'rotateZ(45deg)'});
 }
 
-// 
+// fade in keyboard hints
+
+// keyboard switch animation
