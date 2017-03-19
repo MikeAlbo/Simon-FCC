@@ -104,9 +104,10 @@ $(document).ready(function(){
         newGame = new Logic();
         // new game message scroll with countdown
         setTimeout(function(){
+           messages.playMessage(3);
             newGame.initGame();
         }, 200);
-        console.log("new game created");
+
     }
     
     // handle strict mode

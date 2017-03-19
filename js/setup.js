@@ -11,3 +11,4 @@
     var startButton = $("#startResetButton");
     var strictButton = $("#strictModeButton");
     var dangerButton = $("#dangerButton");
+    var messageDisplay = $("#outputScreen p");

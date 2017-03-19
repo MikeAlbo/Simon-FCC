@@ -111,14 +111,16 @@ function generateNewValue(selected){
 // ====== keyboard  mode animation =======
 
 $(switchDiv).click(function(){keyboard()});
-
+    
 //activate keyboard
 function keyboard(){
     if(!keyboardOn){
+        messages.playMessage(6);
         keyboardRotation.play();
         switchAnimation.play();
         keyboardNumberAnimation.play();
     } else {
+        messages.playMessage(7);
         keyboardRotation.reverse();
         switchAnimation.reverse();
         keyboardNumberAnimation.reverse();

@@ -9,8 +9,10 @@ var Logic = function(){
         dangerMode = false,
         strictMode = false,
         startGame = false,
-        userTurn = false;
+        userTurn = false,
+        message;
     
+//    message = new MessageGenerator();
     
     // generate a new move
     function newMove(){
@@ -32,7 +34,7 @@ var Logic = function(){
     //modify user turn
     function modifyUserTurn(){
         userTurn = !userTurn;
-        console.log("user turn: " + userTurn);
+        //console.log("user turn: " + userTurn);
     }
     
     // handle error input
@@ -47,7 +49,8 @@ var Logic = function(){
             return endGame();
            }    
            
-           console.log("user error, non strict mode");
+           messages.playMessage(8);
+           //console.log("user error, non strict mode");
            seqPlayback();
             counter = 0;
        }, 500);
@@ -57,8 +60,8 @@ var Logic = function(){
 
     // end game 
     function endGame(){
-        console.log("user error, strict mode");
-        // message output 
+        //console.log("user error, strict mode");
+        messages.playMessage(9);
         data = [];
         counter = 0;
         aiTurn();
@@ -73,7 +76,7 @@ var Logic = function(){
     
     // game won
     function gameWon(){
-        // game won animation and audio seq
+        messages.playMessage(10);
         // reset game
     }
     
@@ -87,26 +90,6 @@ var Logic = function(){
     function addMove(){
         return data.push(newMove());
     };
-    
-    // playback seq
-    
-//    function seqPlayback(){
-//        var i = 0;
-//        console.log("data: " + data);
-//        setInterval(function(){
-//           if(i >= data.length){
-//               console.log("setInterval");
-//               clearInterval();
-//           } else {
-//                console.log("data[i]: called on selectPiece: " + data[i]);
-//                selectPiece(data[i]);
-//                i++;
-//           }
-//        }, gameSpeed);
-//        
-//        modifyUserTurn();
-//    } // seq playback 
-    
     
     // seq playback
     
@@ -124,7 +107,7 @@ var Logic = function(){
                 playSound(data[i]);
                 selectPiece(data[i]);
                 i++;
-                console.log("move");
+                //console.log("move");
             }
         }
         
@@ -134,6 +117,9 @@ var Logic = function(){
     function aiTurn(){
         addMove();
         seqPlayback();
+        setTimeout(function(){
+            messages.updateCount(data.length);
+        }, 1000);
     }
     
     
@@ -173,14 +159,24 @@ var Logic = function(){
     // strict mode 
     this.strictMode = function(){
         strictMode = !strictMode;
-        console.log("strict mode: ", strictMode);
+        //console.log("strict mode: ", strictMode);
+        if(strictMode){
+            messages.playMessage(1);
+        } else {
+            messages.playMessage(2);
+        }
     }
     
     // danger mode
     this.dangerMode = function(){
         dangerMode = !dangerMode;
         dangerMode ? dangerModeAnimation() : dangerModeReverse();
-        console.log("danger mode: ", dangerMode);
+        if(dangerMode){
+            messages.playMessage(4);
+        } else {
+            messages.playMessage(5);
+        }
+        //console.log("danger mode: ", dangerMode);
     }
     
     // return data object
